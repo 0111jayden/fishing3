@@ -1,5 +1,6 @@
 class Fish2 extends BaseClass {
   constructor(x, y){
+    var a;
     super(x,y,50,50);
     this.image = loadImage("sprites/fish2.png");
     this.Visiblity = 255;

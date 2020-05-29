@@ -1,5 +1,6 @@
 class Fish1 extends BaseClass {
   constructor(x, y){
+    var a;
     super(x,y,50,50);
     this.image = loadImage("sprites/fish1.png");
     this.Visiblity = 255;
@@ -41,7 +42,7 @@ class Fish1 extends BaseClass {
   }
 
   move(){
-    var a = Math.round(Math.random()*4);
+    a = Math.round(Math.random()*4);
     if (a = 1 && this.body.position.x > 305) {
       this.body.position.x -= 5;
     }
