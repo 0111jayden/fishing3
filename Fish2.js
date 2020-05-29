@@ -1,11 +1,11 @@
-class Pig extends BaseClass {
+class Fish2 extends BaseClass {
   constructor(x, y){
     super(x,y,50,50);
-    this.image = loadImage("sprites/enemy.png");
+    this.image = loadImage("sprites/fish2.png");
     this.Visiblity = 255;
   }
 
- display(){
+  display(){
    //console.log(this.body.speed);
    if(this.body.speed < 3){
     super.display();
@@ -23,6 +23,23 @@ class Pig extends BaseClass {
   score(){
     if (this.Visiblity < 0 && this.Visiblity > -1005){
       score++;
+    }
+  }
+
+
+  move(){
+    var a = Math.round(Math.random()*4);
+    if (a = 1 && this.body.position.x > 305) {
+      this.body.position.x -= 5;
+    }
+    if(a = 2 && this.body.position.y > 200){
+      this.body.position.y -= 5;
+    }
+    if(a = 3 && this.body.position.x < 1050){
+      this.body.position.x += 5
+    }
+    if(a = 4 && this.body.position.y < 375){
+      this.body.position.y += 5
     }
   }
 
