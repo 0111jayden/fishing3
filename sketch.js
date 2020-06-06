@@ -8,6 +8,7 @@ var box1,fish1,fish2;
 var backgroundImg,platform;
 var bird, slingshot;
 var guy;
+var wall,wall2;
 
 var gameState = "onSling";
 var bg = "sprites/bg1.png";
@@ -24,10 +25,12 @@ function setup(){
     world = engine.world;
 
     //var fisherman = Bodies.rectangle(200,100);
-    ground = new Ground(600,height,1200,20);
+    ground = new Ground(600,380,1300,40);
     platform = new Ground(150, 305, 300, 190);
-    fish1 = new Fish1(810, 350);
-    fish2 = new Fish2(750, 350);
+    wall = new Ground(1180,height/2,40,height+80)
+    wall2 = new Ground(280,200,40,height);
+    fish1 = new Fish1(330, 230);
+    fish2 = new Fish2(700, 270);
     bird = new Bird(350,90);
     //log6 = new Log(230,180,80, PI/2);
     slingshot = new SlingShot(bird.body,{x:377, y:80});
@@ -49,15 +52,23 @@ function draw(){
 
     ground.display();
     fish1.display();
-    fish1.score();
-    fish1.move();
+    //fish1.score();
     fish2.display();
-    fish2.score();
-    fish2.move();
+    //fish2.score();
     bird.display();
     platform.display();
     //log6.display();
     slingshot.display();
+    wall.display();
+    //wall2.display();
+    if(frameCount%5===0){
+        fish1.move();
+    }
+
+    if(bird.x>fish1.x-15&&bird.x<fish1.x+15&&bird.y>fish1.y-15&&bird.y<fish1.y+15){
+        World.remove(fish1);
+        score += 1;
+    }
 }
 
 function mouseDragged(){
