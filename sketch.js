@@ -65,9 +65,9 @@ function draw(){
         fish1.move();
     }
 
-    if(bird.x>fish1.x-15&&bird.x<fish1.x+15&&bird.y>fish1.y-15&&bird.y<fish1.y+15){
+    if(isTouching(bird,fish1)){
         World.remove(fish1);
-        score += 1;
+        score += 1
     }
 }
 
@@ -89,6 +89,15 @@ function keyPressed(){
         slingshot.attach(bird.body);
     }
 }
+
+
+
+function isTouching(object1,object2){
+    if((object1.x - object2.x <= object2.width/2 + object1.width/2) && (object2.x - object1.x <= object2.width/2 +object1.width/2) && (object1.y - object2.y <= object2.height/2 + object1.height/2) && (object2.y - object1.y <= object2.height/2 + object1.height/2)){
+        return true
+    }
+}
+
 
 async function getBackgroundImg(){
     var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
